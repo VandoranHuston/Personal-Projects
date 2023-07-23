@@ -1,0 +1,22 @@
+services:
+  - postgres:14
+
+variables:
+  POSTGRES_DB: SneakerDexDB
+  POSTGRES_USER: SneakerDex
+  POSTGRES_PASSWORD: Vandy42
+  PYTHON_RUN: python3
+
+before_script:
+  - pip install -r requirements.txt
+  - cp server/config/github-credentials.yml server/config/db.yml
+  - $PYTHON_RUN --version
+  - $PYTHON_RUN src/server.py & # fire up the server before we run our tests
+
+  - sleep 3
+
+testrunner:
+  script:
+    - $PYTHON_RUN -m unittest -v # run the unit tests; -v prints the test being run
+
+  stage: test
