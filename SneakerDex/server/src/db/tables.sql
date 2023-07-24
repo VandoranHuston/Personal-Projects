@@ -1,0 +1,22 @@
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS wishlists CASCADE;
+DROP TABLE IF EXISTS shoes CASCADE;
+
+CREATE TABLE users (
+    id  SERIAL PRIMARY KEY NOT NULL,
+    name    TEXT NOT NULL,
+    password    TEXT NOT NULL,
+);
+
+CREATE TABLE wishlists (
+    id  SERIAL PRIMARY KEY NOT NULL,
+    item    TEXT NOT NULL,
+    name    TEXT NOT NULL
+);
+
+CREATE TABLE shoes (
+    id  TEXT NOT NULL,
+    price   DECIMAL NOT NULL,
+    name    TEXT NOT NULL,
+    img     TEXT NOT NULL
+);
